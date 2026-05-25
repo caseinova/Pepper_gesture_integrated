@@ -1,0 +1,9 @@
+source;share/pepper_hri/hook/pythonpath.ps1
+source;share/pepper_hri/hook/pythonpath.dsv
+source;share/pepper_hri/hook/pythonpath.sh
+source;share/pepper_hri/hook/ament_prefix_path.ps1
+source;share/pepper_hri/hook/ament_prefix_path.dsv
+source;share/pepper_hri/hook/ament_prefix_path.sh
+source;../../build/pepper_hri/share/pepper_hri/hook/pythonpath_develop.ps1
+source;../../build/pepper_hri/share/pepper_hri/hook/pythonpath_develop.dsv
+source;../../build/pepper_hri/share/pepper_hri/hook/pythonpath_develop.sh

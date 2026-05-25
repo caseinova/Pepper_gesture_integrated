@@ -1,0 +1,6 @@
+[console_scripts]
+audio_processor = audio.audio_processor_node:main
+gesture_manager = gestures.gesture_manager:main
+hri_coordinator = HRI_coordinator:main
+tablet_builder = tablet_assets.builder:main
+

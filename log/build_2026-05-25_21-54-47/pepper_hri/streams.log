@@ -1,0 +1,81 @@
+[0.608s] Invoking command in '/home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri': AMENT_PREFIX_PATH=/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces LD_LIBRARY_PATH=/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins PYTHONPATH=/home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/python3.10/site-packages:/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/build --no-deps symlink_data
+[0.824s] running develop
+[0.971s] running egg_info
+[0.971s] creating pepper_hri.egg-info
+[0.971s] writing pepper_hri.egg-info/PKG-INFO
+[0.971s] writing dependency_links to pepper_hri.egg-info/dependency_links.txt
+[0.971s] writing entry points to pepper_hri.egg-info/entry_points.txt
+[0.971s] writing requirements to pepper_hri.egg-info/requires.txt
+[0.971s] writing top-level names to pepper_hri.egg-info/top_level.txt
+[0.972s] writing manifest file 'pepper_hri.egg-info/SOURCES.txt'
+[0.973s] reading manifest file 'pepper_hri.egg-info/SOURCES.txt'
+[0.974s] writing manifest file 'pepper_hri.egg-info/SOURCES.txt'
+[0.975s] running build_ext
+[0.975s] Creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/python3.10/site-packages/pepper-hri.egg-link (link to .)
+[0.976s] Installing audio_processor script to /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/pepper_hri
+[0.976s] Installing gesture_manager script to /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/pepper_hri
+[0.976s] Installing hri_coordinator script to /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/pepper_hri
+[0.976s] Installing tablet_builder script to /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/pepper_hri
+[0.976s] 
+[0.976s] Installed /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri
+[0.977s] running symlink_data
+[0.977s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/ament_index
+[0.977s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/ament_index/resource_index
+[0.977s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/ament_index/resource_index/packages
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/resource/pepper_hri -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/ament_index/resource_index/packages
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/package.xml -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri
+[0.977s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/launch
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/bootup.launch.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/launch
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/move_pepper.launch.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/launch
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/gesture_manager.launch.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/launch
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/pepper_real.launch.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/launch
+[0.977s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/test_write.html -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_commands.json -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/index.html -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.977s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/menu.html -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/layout.html -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/__init__.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/builder.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/current_state.json -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets
+[0.978s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/walking_robot_exhibit_explanation.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/conclusion.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/crane_exhibit_explanation.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/combination_vault_exhibit_explanation.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/LED_crystal_exhibit_explanation.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/articulated_lamp_exhibit_explanation.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_explanation/glowing_double_pendulum_exhibit_explanation.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_explanation
+[0.978s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images
+[0.978s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/walking_robot
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/walking_robot/walking_robot.gif -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/walking_robot
+[0.978s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation/walking_robot.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation/cryptex.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.978s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation/desk_lamp.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation/pendulum.png -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation/crane.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation/LED_crystal.webp -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/conclusion_compilation
+[0.979s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/LED_crystal
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/LED_crystal/Venn_diagram_rgb.png -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/LED_crystal
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/LED_crystal/LED_crystal.webp -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/LED_crystal
+[0.979s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/combination_vault
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/combination_vault/cryptex.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/combination_vault
+[0.979s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/articulated_lamp
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/articulated_lamp/articulated_lamp.gif -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/articulated_lamp
+[0.979s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/double_pendulum
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/double_pendulum/butterfly_effect.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/double_pendulum
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/double_pendulum/double_pendulum.gif -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/double_pendulum
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/double_pendulum/G1.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/double_pendulum
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/double_pendulum/atlas-blue-mobile-copy.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/double_pendulum
+[0.979s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/crane
+[0.979s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/exhibition_images/crane/crane.jpg -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/tablet_assets/exhibition_images/crane
+[0.980s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/audio
+[0.980s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/audio/audio_processor_node.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/audio
+[0.980s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/audio/__init__.py -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/audio
+[0.980s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/audio/audio_processor_option2
+[0.980s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/audio/audio_processor_option2/commands_to_run.txt -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/audio/audio_processor_option2
+[0.980s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/audio/audio_processor_option2/manual_audio_processor_node -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/audio/audio_processor_option2
+[0.980s] creating /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/config
+[0.980s] symbolically linking /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/config/pepper_real.yaml -> /home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/share/pepper_hri/config
+[1.009s] Invoked command in '/home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri' returned '0': AMENT_PREFIX_PATH=/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces LD_LIBRARY_PATH=/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins PYTHONPATH=/home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/tom/hayden_ws/Hayden_ws_ros/install/pepper_hri/lib/python3.10/site-packages:/home/tom/hayden_ws/Hayden_ws_ros/install/social_robot_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/build --no-deps symlink_data

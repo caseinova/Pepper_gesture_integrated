@@ -1,6 +1,11 @@
 tablet_builder_node:
   ros__parameters:
     use_sim_time: false
+    pepper_ip: "192.168.0.150"
+    naoqi_port: 9559
+    use_tablet_service: true
+    tablet_base_url: ""
+    show_local_browser: false
 
 hri_coordinator_node:
   ros__parameters:

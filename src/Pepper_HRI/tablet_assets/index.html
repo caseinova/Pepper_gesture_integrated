@@ -169,7 +169,7 @@
             </div>
 
             <div class="control-panel">
-                <button class="nav-btn" onclick="navigateToPage('menu.html')">Tour Select</button>
+                <button class="nav-btn" onclick="requestTabletNavigation('menu.html', 'Tour Select')">Tour Select</button>
                 <button class="zoom-btn" onclick="adjustTextSize(-5)">- Text Size</button>
                 <button class="zoom-btn" onclick="adjustTextSize(5)">+ Text Size</button>
             </div>
@@ -197,7 +197,7 @@ In terms of my own mechanisms, you can see this most prominently in the movement
                 if (currentCommand === null) {
                     currentCommand = data.command;
                 } else if (data.command !== currentCommand) {
-                    window.location.reload();
+                    requestTabletNavigation('index.html', 'External Command');
                 }
             } catch (error) {}
         }
@@ -244,13 +244,89 @@ In terms of my own mechanisms, you can see this most prominently in the movement
             }
         }
 
-        // NEW Navigation Functionality
-        function navigateToPage(url) {
-            window.location.href = url;
+        function logTablet(message, payload, level = 'info') {
+            console.log(message, payload || '');
+            fetch('/tablet_log', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ level, message, payload: payload || null })
+            }).catch(() => {});
+        }
+
+        function nextTabletEventId() {
+            return Date.now().toString() + '-' + Math.random().toString(16).slice(2);
+        }
+
+        function postTabletEventFallback(payload) {
+            fetch('/tablet_event', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                logTablet('HTTP tablet event fallback posted', payload);
+            }).catch((error) => {
+                logTablet('HTTP tablet event fallback failed', {
+                    message: error.message,
+                    payload
+                }, 'error');
+            });
+        }
+
+        function raiseTabletEvent(payload) {
+            const hasBinding = !!window.ALTabletBinding;
+            const hasRaiseEvent = !!(window.ALTabletBinding && window.ALTabletBinding.raiseEvent);
+            logTablet('Attempting ALTabletBinding.raiseEvent', {
+                payload,
+                hasBinding,
+                hasRaiseEvent,
+                url: window.location.href
+            });
+
+            if (hasRaiseEvent) {
+                try {
+                    window.ALTabletBinding.raiseEvent(JSON.stringify(payload));
+                    logTablet('ALTabletBinding.raiseEvent returned', payload);
+                    return true;
+                } catch (error) {
+                    logTablet('ALTabletBinding.raiseEvent threw', {
+                        message: error.message,
+                        payload
+                    }, 'error');
+                }
+            }
+
+            logTablet('ALTabletBinding.raiseEvent unavailable', {
+                hasBinding,
+                hasRaiseEvent,
+                payload
+            }, 'warn');
+            return false;
+        }
+
+        function requestTabletNavigation(page, buttonLabel) {
+            const payload = {
+                type: 'navigate',
+                page: page,
+                button: buttonLabel,
+                eventId: nextTabletEventId()
+            };
+            logTablet('Navigation button pressed', payload);
+            const sentToPepper = raiseTabletEvent(payload);
+            postTabletEventFallback(payload);
+
+            if (!sentToPepper) {
+                logTablet('ALTabletBinding path unavailable; waiting for HTTP fallback', { page }, 'warn');
+            }
         }
 
         // Run everything when the page loads
         window.addEventListener('load', () => {
+            logTablet('Tablet page loaded', {
+                url: window.location.href,
+                hasBinding: !!window.ALTabletBinding,
+                hasRaiseEvent: !!(window.ALTabletBinding && window.ALTabletBinding.raiseEvent),
+                buttonCount: document.querySelectorAll('button').length
+            });
             setupGallery();   
             startAutoScroll(); 
         });

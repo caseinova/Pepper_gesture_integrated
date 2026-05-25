@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from social_robot_interfaces/srv/Description.srv
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/String.idl"
+
+module social_robot_interfaces {
+  module srv {
+    struct Description_Request {
+      int64 idx;
+    };
+    struct Description_Response {
+      std_msgs::msg::String description;
+    };
+  };
+};
