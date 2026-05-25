@@ -171,11 +171,76 @@ class TabletBuilderNode(Node):
             f"Evaluating touch fallback from {source}: page='{page}', "
             f"x={norm_x:.3f}, y={norm_y:.3f}")
 
-        if page == 'index.html' and norm_x <= 0.36 and norm_y >= 0.78:
+        if page != 'index.html' or norm_y < 0.78:
+            return
+
+        # Bottom-left control row on index.html:
+        # Tour Select | - Text Size | + Text Size. Keep ranges intentionally
+        # conservative so zoom presses do not trigger navigation.
+        if 0.00 <= norm_x < 0.12:
             self._last_touch_action_time = now
             self.get_logger().warn(
                 "Touch fallback matched Tour Select button; navigating to menu.html")
             self.show_tablet_page('menu.html')
+        elif 0.12 <= norm_x < 0.25:
+            self._last_touch_action_time = now
+            self.get_logger().warn(
+                "Touch fallback matched decrease text size button")
+            self.adjust_tablet_text_size(-5)
+        elif 0.25 <= norm_x < 0.40:
+            self._last_touch_action_time = now
+            self.get_logger().warn(
+                "Touch fallback matched increase text size button")
+            self.adjust_tablet_text_size(5)
+
+    def adjust_tablet_text_size(self, change):
+        script = """
+            (function () {
+                if (typeof adjustTextSize === 'function') {
+                    adjustTextSize(__CHANGE__);
+                    if (window.ALTabletBinding && window.ALTabletBinding.raiseEvent) {
+                        var textBox = document.querySelector('.text-box');
+                        var size = textBox ? window.getComputedStyle(textBox).fontSize : '';
+                        window.ALTabletBinding.raiseEvent(JSON.stringify({
+                            type: 'text_size_changed',
+                            change: __CHANGE__,
+                            fontSize: size
+                        }));
+                    }
+                    return;
+                }
+
+                var textBox = document.querySelector('.text-box');
+                if (!textBox) return;
+                var currentSize = parseInt(window.getComputedStyle(textBox).fontSize, 10) || 50;
+                var newSize = currentSize + __CHANGE__;
+                if (newSize >= 20 && newSize <= 100) {
+                    textBox.style.fontSize = newSize + 'px';
+                }
+                if (window.ALTabletBinding && window.ALTabletBinding.raiseEvent) {
+                    window.ALTabletBinding.raiseEvent(JSON.stringify({
+                        type: 'text_size_changed',
+                        change: __CHANGE__,
+                        fontSize: textBox.style.fontSize
+                    }));
+                }
+            })();
+        """.replace('__CHANGE__', str(int(change)))
+        self.execute_tablet_js(script, f"adjust text size by {change}")
+
+    def execute_tablet_js(self, script, description):
+        tablet_service = self.connect_tablet_service()
+        if tablet_service is None:
+            return False
+
+        try:
+            tablet_service.executeJS(script)
+            self.get_logger().info(f"ALTabletService.executeJS({description})")
+            return True
+        except Exception as exc:
+            self.get_logger().error(
+                f"ALTabletService.executeJS({description}) failed: {exc}")
+            return False
 
     def handle_tablet_js_event(self, event):
         self.get_logger().info(f"ALTabletService.onJSEvent: {event}")
@@ -219,6 +284,8 @@ class TabletBuilderNode(Node):
             elif event_type == 'diagnostic':
                 self.get_logger().info(f"Tablet diagnostic event: {data}")
                 self.report_tablet_diagnostic(data)
+            elif event_type == 'text_size_changed':
+                self.get_logger().info(f"Tablet text size changed: {data}")
             else:
                 self.get_logger().warn(f"Unhandled tablet JS event: {event}")
         except Exception as exc:
@@ -317,6 +384,29 @@ class TabletBuilderNode(Node):
                 self._tablet_service = None
                 self._tablet_signal_id = None
             return False
+
+    def clear_tablet_webview(self):
+        tablet_service = self.connect_tablet_service()
+        if tablet_service is None:
+            return False
+
+        cleared = True
+        try:
+            tablet_service.hideWebview()
+            self.get_logger().info("ALTabletService.hideWebview() before initial page")
+        except Exception as exc:
+            cleared = False
+            self.get_logger().warn(f"ALTabletService.hideWebview failed before initial page: {exc}")
+
+        try:
+            tablet_service.cleanWebview()
+            self.get_logger().info("ALTabletService.cleanWebview() before initial page")
+        except Exception as exc:
+            cleared = False
+            self.get_logger().warn(f"ALTabletService.cleanWebview failed before initial page: {exc}")
+
+        self.current_tablet_page = ''
+        return cleared
 
     def inject_tablet_diagnostics(self, tablet_service, url):
         def run_diagnostics():
@@ -685,6 +775,7 @@ def start_server(node):
             if node.get_parameter('show_local_browser').value:
                 print("Opening browser...")
                 webbrowser.open(f"http://localhost:{PORT}/index.html")
+            node.clear_tablet_webview()
             node.show_tablet_page('index.html')
 
         ROSRequestHandler.extensions_map.update({
