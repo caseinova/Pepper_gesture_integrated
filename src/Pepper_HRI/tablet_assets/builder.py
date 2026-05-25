@@ -52,6 +52,8 @@ class TabletBuilderNode(Node):
         self.declare_parameter('naoqi_port', 9559)
         self.declare_parameter('use_tablet_service', True)
         self.declare_parameter('tablet_base_url', '')
+        self.declare_parameter('tablet_port', 8000)
+        self.declare_parameter('auto_select_tablet_port', True)
         self.declare_parameter('show_local_browser', False)
         self._tablet_session = None
         self._tablet_service = None
@@ -673,17 +675,34 @@ def get_reachable_host_ip(node):
         return 'localhost'
 
 
+def create_tablet_server(node, handler_class):
+    start_port = int(node.get_parameter('tablet_port').value)
+    auto_select = bool(node.get_parameter('auto_select_tablet_port').value)
+    candidate_ports = [start_port]
+    if auto_select:
+        candidate_ports.extend(range(start_port + 1, start_port + 21))
+
+    last_error = None
+    for port in candidate_ports:
+        try:
+            httpd = socketserver.TCPServer(("", port), handler_class)
+            if port != start_port:
+                node.get_logger().warn(
+                    f"Tablet HTTP port {start_port} is busy; using {port} instead.")
+            return httpd, port
+        except OSError as exc:
+            last_error = exc
+            if exc.errno != 98:
+                raise
+            node.get_logger().warn(f"Tablet HTTP port {port} is already in use.")
+
+    raise last_error
+
+
 # Global server loop runner function (cleanly isolated from Node class scopes)
 def start_server(node):
     # Force the local server context directory straight to our root assets folder
     os.chdir(SCRIPT_DIR)
-    
-    PORT = 8000
-    configured_base_url = str(node.get_parameter('tablet_base_url').value).strip()
-    if configured_base_url:
-        node.tablet_base_url = configured_base_url.rstrip('/')
-    else:
-        node.tablet_base_url = f"http://{get_reachable_host_ip(node)}:{PORT}"
 
     # Define custom request handler class inline to access the 'node' reference directly
     class ROSRequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -763,9 +782,26 @@ def start_server(node):
                 self.end_headers()
 
     socketserver.TCPServer.allow_reuse_address = True
-    
-    with socketserver.TCPServer(("", PORT), ROSRequestHandler) as httpd:
-        print(f"Serving at http://localhost:{PORT}")
+
+    try:
+        httpd, selected_port = create_tablet_server(node, ROSRequestHandler)
+    except OSError as exc:
+        node.get_logger().error(f"Could not start tablet HTTP server: {exc}")
+        return
+
+    configured_base_url = str(node.get_parameter('tablet_base_url').value).strip()
+    if configured_base_url:
+        node.tablet_base_url = configured_base_url.rstrip('/')
+        configured_port = urlparse(node.tablet_base_url).port
+        if configured_port is not None and configured_port != selected_port:
+            node.get_logger().warn(
+                f"Configured tablet_base_url uses port {configured_port}, "
+                f"but local tablet server is listening on {selected_port}.")
+    else:
+        node.tablet_base_url = f"http://{get_reachable_host_ip(node)}:{selected_port}"
+
+    with httpd:
+        print(f"Serving at http://localhost:{selected_port}")
         node.get_logger().info(f"Pepper tablet base URL: {node.tablet_base_url}")
         node.get_logger().info(
             f"Pepper tablet health check URL: {node.tablet_base_url}/health")
@@ -774,7 +810,7 @@ def start_server(node):
             time.sleep(0.5)
             if node.get_parameter('show_local_browser').value:
                 print("Opening browser...")
-                webbrowser.open(f"http://localhost:{PORT}/index.html")
+                webbrowser.open(f"http://localhost:{selected_port}/index.html")
             node.clear_tablet_webview()
             node.show_tablet_page('index.html')
 

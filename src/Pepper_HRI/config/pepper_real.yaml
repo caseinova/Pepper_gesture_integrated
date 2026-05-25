@@ -5,6 +5,8 @@ tablet_builder_node:
     naoqi_port: 9559
     use_tablet_service: true
     tablet_base_url: ""
+    tablet_port: 8000
+    auto_select_tablet_port: true
     show_local_browser: false
 
 hri_coordinator_node:
