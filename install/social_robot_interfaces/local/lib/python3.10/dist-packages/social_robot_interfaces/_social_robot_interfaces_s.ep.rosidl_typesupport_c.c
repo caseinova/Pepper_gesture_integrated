@@ -1,1 +1,0 @@
-/home/tom/hayden_ws/Hayden_ws_ros/build/social_robot_interfaces/rosidl_generator_py/social_robot_interfaces/_social_robot_interfaces_s.ep.rosidl_typesupport_c.c

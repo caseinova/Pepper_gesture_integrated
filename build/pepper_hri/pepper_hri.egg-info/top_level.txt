@@ -1,4 +1,0 @@
-HRI_coordinator
-audio
-gestures
-tablet_assets

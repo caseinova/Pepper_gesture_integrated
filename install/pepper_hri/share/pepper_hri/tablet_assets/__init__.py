@@ -1,1 +1,0 @@
-/home/tom/hayden_ws/Hayden_ws_ros/build/pepper_hri/tablet_assets/__init__.py

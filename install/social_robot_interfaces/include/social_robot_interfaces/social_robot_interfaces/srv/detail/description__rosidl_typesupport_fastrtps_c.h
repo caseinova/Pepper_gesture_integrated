@@ -1,1 +1,0 @@
-/home/tom/hayden_ws/Hayden_ws_ros/build/social_robot_interfaces/rosidl_typesupport_fastrtps_c/social_robot_interfaces/srv/detail/description__rosidl_typesupport_fastrtps_c.h

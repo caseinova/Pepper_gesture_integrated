@@ -1,1 +1,0 @@
-/home/tom/hayden_ws/Hayden_ws_ros/src/social_robot_interfaces/msg/TspCommand.msg

@@ -1,1 +1,0 @@
-/home/tom/hayden_ws/Hayden_ws_ros/build/social_robot_interfaces/rosidl_typesupport_introspection_cpp/social_robot_interfaces/msg/detail/tsp_command__rosidl_typesupport_introspection_cpp.hpp

@@ -1,1 +1,0 @@
-/home/tom/hayden_ws/Hayden_ws_ros/src/Pepper_HRI/gesture_manager.launch.py
